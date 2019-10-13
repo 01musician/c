@@ -1,4 +1,4 @@
-How to pass a 2D array as a parameter in C?
+# How to pass a 2D array as a parameter in C?
 
 A one dimensional array can be easily passed as a pointer, but syntax for passing a 2D array to a function can be difficult to remember. One important thing for passing multidimensional arrays is, first array dimension does not have to be specified. The second (and any subsequent) dimensions must be given
 1) When both dimensions are available globally (either as a macro or as a global constant).
