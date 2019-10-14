@@ -2,7 +2,7 @@
 
 A one dimensional array can be easily passed as a pointer, but syntax for passing a 2D array to a function can be difficult to remember. One important thing for passing multidimensional arrays is, first array dimension does not have to be specified. The second (and any subsequent) dimensions must be given
 1) When both dimensions are available globally (either as a macro or as a global constant).
-
+```c
 #include <stdio.h> 
 const int M = 3; 
 const int N = 3; 
@@ -21,6 +21,7 @@ int main()
     print(arr); 
     return 0; 
 } 
+```
 Output:
 1 2 3 4 5 6 7 8 9
 
