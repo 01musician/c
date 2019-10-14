@@ -55,6 +55,7 @@ Output:
 ```
 
 The above method is fine if second dimension is fixed and is not user specified. The following methods handle cases when second dimension can also change.
+
 3) If compiler is C99 compatible
 From C99, C language supports variable sized arrays to be passed simply by specifying the variable dimensions (See this for an example run)
 
@@ -84,6 +85,7 @@ Output on a C99 compatible compiler:
 1 2 3 4 5 6 7 8 9
 ```
 If compiler is not C99 compatible, then we can use one of the following methods to pass a variable sized 2D array.
+
 4) Using a single pointer
 In this method, we must typecast the 2D array when passing to function.
 ```c
