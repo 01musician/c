@@ -23,9 +23,13 @@ int main()
 } 
 ```
 Output:
+```console
 1 2 3 4 5 6 7 8 9
+```
 
 2) When only second dimension is available globally (either as a macro or as a global constant).
+
+```c
 #include <stdio.h> 
 const int N = 3; 
   
@@ -43,11 +47,18 @@ int main()
     print(arr, 3); 
     return 0; 
 } 
+```
 Output:
+
+```console
 1 2 3 4 5 6 7 8 9
+```
+
 The above method is fine if second dimension is fixed and is not user specified. The following methods handle cases when second dimension can also change.
 3) If compiler is C99 compatible
 From C99, C language supports variable sized arrays to be passed simply by specifying the variable dimensions (See this for an example run)
+
+```c
 // The following program works only if your compiler is C99 compatible. 
 #include <stdio.h> 
   
@@ -67,11 +78,15 @@ int main()
     print(m, n, arr); 
     return 0; 
 }
+```
 Output on a C99 compatible compiler:
+```console
 1 2 3 4 5 6 7 8 9
+```
 If compiler is not C99 compatible, then we can use one of the following methods to pass a variable sized 2D array.
 4) Using a single pointer
 In this method, we must typecast the 2D array when passing to function.
+```c
 #include <stdio.h> 
 void print(int *arr, int m, int n) 
 { 
@@ -90,5 +105,8 @@ int main()
     print((int *)arr, m, n); 
     return 0; 
 } 
+```
 Output:
+```console
 1 2 3 4 5 6 7 8 9
+```
