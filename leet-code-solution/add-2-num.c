@@ -21,33 +21,86 @@
  * };
  */
 
-struct ListNode * revese_list(struct ListNode *l)
-{
-    struct ListNode *on;
-    struct ListNode *pre, *cur;
-    struct ListNode *h = l;
-    
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2){
+  int carry = 0;
 
-    if ( l->next == NULL)
-        return l;
+    struct ListNode *pre=NULL, *head=NULL, *temp, *over;
+    struct ListNode *ll1, *ll2;
 
-    pre = l;
-    cur = l->next;
+    ll1 = l1;
+    ll2 = l2;
+
+    if (ll1==NULL || ll2==NULL)
+        return NULL;
     
-    while(cur != NULL)
+    while((ll1 != NULL) && (ll2 != NULL))
     {
-        on = cur->next;
-        cur->next = pre;
-        if
-        l = l->next;
+        temp = (struct ListNode *)malloc(sizeof(struct ListNode));
+        if (temp == NULL)
+            return NULL;
+
+        temp->val = (ll1->val + ll2->val + carry)%10;
+        carry = (ll1->val + ll2->val + carry)/10;
+        temp->next = NULL;
+
+        if (head == NULL)
+        {
+            head = temp;
+            pre  = temp;
+        }
+        else {
+            pre->next = temp;
+            pre = temp;
+        }
+        ll1 = ll1->next;
+        ll2 = ll2->next;
     }
 
+    over = ll1;
+
+    if(over == NULL)
+        over = ll2;
+
+    if(over == NULL)
+    {
+        if (carry != 0)
+        {
+            temp = (struct ListNode *)malloc(sizeof(struct ListNode));
+            if (temp == NULL)
+                return NULL;
+            temp->val = carry;
+            temp->next = NULL;
+
+            pre->next = temp;
+        }
+        return head;
+    }
+
+    while(over != NULL)
+    {
+        temp = (struct ListNode *)malloc(sizeof(struct ListNode));
+        if (temp == NULL)
+            return NULL;
+        temp->val = (carry + over->val)%10;
+        carry = (carry + over->val)/10;
+        temp->next = NULL;
+
+        pre->next = temp;
+        pre = temp;
         
+        over = over->next;
+    }
 
-    
+    if (carry != 0)
+    {
+        temp = (struct ListNode *)malloc(sizeof(struct ListNode));
+        if (temp == NULL)
+            return NULL;
+        temp->val = carry;
+        temp->next = NULL;
 
+        pre->next = temp;
+    }
 
-struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2){
-    
-
+    return head;
 }
