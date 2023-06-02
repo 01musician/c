@@ -125,7 +125,7 @@ const struct file_operations trfs_file_operations = {
 
 const struct file_operations trfs_dir_operations = {
 	.owner = THIS_MODULE,
-	.iterate_shared  = trfs_readdir,
+	.iterate = trfs_readdir,
 };
 
 // 创建文件的实现
@@ -154,7 +154,7 @@ static int trfs_do_create(struct inode *dir, struct dentry *dentry, umode_t mode
 
 	inode->i_sb = sb;
 	inode->i_op = &trfs_inode_ops;
-	inode->i_atime = inode->i_mtime = inode->i_ctime = current_time(inode);
+	inode->i_atime = inode->i_mtime = inode->i_ctime = current_fs_time(sb);
 
 	idx = get_finfo_arr(); // 获取一个空闲的文件块保存新文件
 
@@ -215,7 +215,7 @@ static struct inode *trfs_iget(struct super_block *sb, int idx)
 	else if (S_ISREG(blk->mode))
 		inode->i_fop = &trfs_file_operations;
 
-	inode->i_atime = inode->i_mtime = inode->i_ctime = current_time(inode);
+	inode->i_atime = inode->i_mtime = inode->i_ctime = current_fs_time(sb);
 	inode->i_private = blk;
 
 	return inode;
@@ -296,7 +296,7 @@ int trfs_fill_super(struct super_block *sb, void *data, int silent)
 	root_inode->i_sb = sb;
 	root_inode->i_op = &trfs_inode_ops;
 	root_inode->i_fop = &trfs_dir_operations;
-	root_inode->i_atime = root_inode->i_mtime = root_inode->i_ctime = current_time(root_inode);
+	root_inode->i_atime = root_inode->i_mtime = root_inode->i_ctime = current_fs_time(sb);
 
 	finfo_arr[1].mode = mode;
 	finfo_arr[1].dir_children = 0;
