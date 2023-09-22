@@ -9,7 +9,7 @@ int main() {
     char *lasts;
     int i=0;
 
-    printf("tokenizing \"%s\" with / using strtok():\n", buf);
+    printf("tokenizing \"%s\" with \"/\" using strtok():\n", buf);
     if ((token = strtok(buf, "/")) != NULL) {
         i++;
         printf("token = \"%s\"\n", token);
@@ -21,7 +21,7 @@ int main() {
     printf("iteration num is:%d.\n", i);
 
     i=0;
-    printf("\ntokenizing \"%s\" with / using strtok_r():\n", buf1);
+    printf("\ntokenizing \"%s\" with \"/\" using strtok_r():\n", buf1);
     if ((token = strtok_r(buf1, "/", &lasts)) != NULL) {
         i++;
         printf("token = \"%s\"\n", token);
