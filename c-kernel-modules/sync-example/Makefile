@@ -1,10 +1,5 @@
-obj-m += hello-1.o 
-obj-m += hello-2.o 
-<<<<<<< HEAD
-=======
-obj-m += hello-3.o 
-obj-m += hello-4.o 
->>>>>>> aba0db90bd8721a6d962e8e91c35e6ea9847a00a
+obj-m += example_mutex.o 
+obj-m += example_spinlock.o 
  
 PWD := $(CURDIR) 
  

@@ -1,0 +1,33 @@
+#include <linux/syscalls.h>
+#include <linux/unistd.h>
+
+SYSCALL_DEFINE1(my_syscall, int, arg) {
+    /* Implement the new system call */
+    return arg * 2;
+}
+
+
+
+static int my_syscall_num = 333;
+
+static int __init my_module_init(void)
+{
+    int ret = register_syscall(my_syscall_num, my_syscall);
+    if (ret != my_syscall_num) {
+        printk(KERN_ERR "Failed to register my_syscall (%d)\n", ret);
+        return ret;
+    }
+    printk(KERN_INFO "Registered my_syscall with number %d\n", my_syscall_num);
+    return 0;
+}
+
+static void __exit my_module_exit(void)
+{
+    unregister_syscall(my_syscall_num);
+    printk(KERN_INFO "Unregistered my_syscall with number %d\n", my_syscall_num);
+}
+
+module_init(my_module_init);
+module_exit(my_module_exit);
+MODULE_LICENSE("GPL");
+

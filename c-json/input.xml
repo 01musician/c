@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+    <book category="cooking">
+        <title lang="en">The Joy of Cooking</title>
+        <author>John Doe</author>
+        <year>2005</year>
+        <price>30.00</price>
+    </book>
+    <book category="fiction">
+        <title lang="en">Harry Potter and the Chamber of Secrets</title>
+        <author>J.K. Rowling</author>
+        <year>1998</year>
+        <price>25.99</price>
+    </book>
+</bookstore>
