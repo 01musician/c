@@ -1,10 +1,6 @@
-GIT_HOOK := .git/hooks/applied
-$(GIT_HOOK): scripts/install-git-hooks
-	@$<
-	@echo
 
 .PHONY: all check clean
-all: $(GIT_HOOK) check
+all: check
 .DEFAULT_GOAL := all
 
 include common.mk
