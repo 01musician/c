@@ -1,2 +1,2 @@
-typedef int Item
+typedef int Item;
 #define eq(A, B) (A == B)

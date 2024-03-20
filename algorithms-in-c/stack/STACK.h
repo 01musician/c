@@ -2,5 +2,5 @@
 
 void STACKinit(int);
 int  STACKempty(void);
-int  STACKpush(Item);
+void STACKpush(Item);
 Item STACKpop();
